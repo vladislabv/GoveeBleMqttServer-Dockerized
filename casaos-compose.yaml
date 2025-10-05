@@ -7,8 +7,7 @@ services:
       resources:
         limits:
           memory: 1024M
-    build: .
-    image: govee-ble-mqtt:py37
+    image: ghcr.io/vladislabv/goveeblemqttserver-dockerized:master
     labels: []
     ports: []
     restart: unless-stopped
