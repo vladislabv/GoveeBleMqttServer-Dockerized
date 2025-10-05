@@ -8,13 +8,19 @@ import getopt;
 import time;
 import signal;
 
-SERVER_ZONE_ID: int = 1;
-ADAPTER: str = None;
-MQTT_SERVER: str = "192.168.14.12";
-MQTT_PORT: int = 1883;
-MQTT_USER: str = None;
-MQTT_PASS: str = None;
+# -----------------------------------------------------------------------------
+# Configuration: Environment variable override
+# -----------------------------------------------------------------------------
+# Each setting can be defined as an environment variable.
+# If not provided, defaults from below are used.
 
+SERVER_ZONE_ID: int = int(os.getenv("SERVER_ZONE_ID", 1));
+ADAPTER: str = os.getenv("ADAPTER", None);
+MQTT_SERVER: str = os.getenv("MQTT_SERVER", "192.168.14.12");
+MQTT_PORT: int = int(os.getenv("MQTT_PORT", 1883));
+MQTT_USER: str = os.getenv("MQTT_USER", None);
+MQTT_PASS: str = os.getenv("MQTT_PASS", None);
+# -----------------------------------------------------------------------------
 # ////////////////////////////////////////////////////////////////////////////
 # ////////////////////////////////////////////////////////////////////////////
 
