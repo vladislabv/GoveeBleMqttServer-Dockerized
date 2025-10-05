@@ -1,0 +1,47 @@
+name: govee-ble-mqtt
+services:
+  govee-ble-mqtt:
+    cpu_shares: 90
+    command: []
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+    build: .
+    image: govee-ble-mqtt:py37
+    labels: []
+    ports: []
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /run/dbus
+        target: /run/dbus
+    devices: []
+    cap_add: []
+    environment:
+      SERVER_ZONE_ID: "1"
+      MQTT_SERVER: "192.168.10.170"
+      MQTT_PORT: "1883"
+      MQTT_USER: ""
+      MQTT_PASS: ""
+      SCAN_INTERVAL: 30
+    network_mode: host
+    privileged: false
+    container_name: ""
+    hostname: ""
+
+x-casaos:
+      author: self
+      category: "Home Automation"
+      hostname: ""
+      icon: "https://raw.githubusercontent.com/hardcpp/GoveeBleMqttServer/main/icon.png"
+      index: /
+      is_uncontrolled: false
+      port_map: ""
+      scheme: http
+      title: "Govee BLE → MQTT Server"
+      description:
+        "Govee BLE to MQTT bridge — listens for Bluetooth LE Govee sensors and publishes data to your MQTT broker. Uses host networking and DBus for BlueZ BLE stack."
+      note: |
+        Requires host Bluetooth access and BlueZ running on the host.
+        Recommended to run on devices with integrated BLE (e.g. Raspberry Pi).
