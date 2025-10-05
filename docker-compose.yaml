@@ -1,0 +1,17 @@
+services:
+  govee-ble-mqtt:
+    image: govee-ble-mqtt
+    build: .
+    container_name: govee-ble-mqtt
+    network_mode: host
+    privileged: true
+    environment:
+      SERVER_ZONE_ID: 1
+      ADAPTER: ""
+      MQTT_SERVER: 192.168.10.170
+      MQTT_PORT: 1883
+      MQTT_USER: ""
+      MQTT_PASS: ""
+    volumes:
+      - /var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket
+    restart: unless-stopped
